@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002-add-audit-columns-customer
+      author: digibnk
+      changes:
+        - addColumn:
+            tableName: customer
+            columns:
+              - column:
+                  name: created_by
+                  type: VARCHAR(100)
+              - column:
+                  name: updated_by
+                  type: VARCHAR(100)
+      rollback:
+        - dropColumn:
+            tableName: customer
+            columnName: created_by
+        - dropColumn:
+            tableName: customer
+            columnName: updated_by
